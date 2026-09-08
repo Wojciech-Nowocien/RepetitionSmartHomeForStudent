@@ -6,5 +6,7 @@ package pl.zsgornik.smarthome.model;
 
 public interface Controllable {
 
-    // TODO
+    void incrasePower();
+
+    void decrasePower();
 }

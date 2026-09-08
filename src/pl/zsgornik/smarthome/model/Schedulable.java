@@ -5,5 +5,5 @@ package pl.zsgornik.smarthome.model;
 
 public interface Schedulable {
 
-    // TODO
+    void schedule(String time);
 }
