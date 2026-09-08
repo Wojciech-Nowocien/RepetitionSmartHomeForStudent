@@ -12,8 +12,48 @@ package pl.zsgornik.smarthome.model;
 
 //Przesłoń metodę: showInfo(). Powinna wyświetlać informacje o lampie.
 
-public class Lamp {
+public class Lamp extends Device implements Controllable {
 
-    // TODO
+    private int brightness;
 
+    public Lamp(String name, int power, String room, int brightness) {
+        super(name, power, room);
+        if (brightness < 0) {
+            brightness = 0;
+        } else if (brightness > 100) {
+            brightness = 100;
+        }
+    }
+
+
+    @Override
+    public void incrasePower() {
+        brightness += 10;
+        if (brightness > 100) {
+            brightness = 100;
+        }
+        System.out.println("Zwiększono moc (jasność) urządzenia  " + getName() + " o 10. Obecna wartość to " + brightness + "%.");
+    }
+
+    @Override
+    public void decrasePower() {
+        brightness -= 10;
+        if (brightness < 0) {
+            brightness = 0;
+        }
+        System.out.println("Zmniejszono moc (jasność) urządzenia  " + getName() + " o 10. Obecna wartość to " + brightness + "%.");
+    }
+
+    @Override
+    void showInfo() {
+        System.out.println("Lampa: "+ getName());
+        System.out.println("Pomieszczenie: "+ getRoom());
+        System.out.println("Moc: "+ getPower());
+        System.out.println("Stan: "+( isOn() ? "włączona" : "wyłączona") + ".");
+        System.out.println("Jasność: " + brightness +"%.");
+    }
+
+    public int getBrightness() {
+        return brightness;
+    }
 }
