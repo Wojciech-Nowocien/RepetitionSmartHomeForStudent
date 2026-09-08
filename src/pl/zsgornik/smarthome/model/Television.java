@@ -16,8 +16,70 @@ package pl.zsgornik.smarthome.model;
 //Przesłoń:
 //showInfo()
 
-public class Television {
+public class Television extends Device {
+    private int channel;
+    private int volume;
 
-    // TODO
+    public Television(String name, String room, int power, int channel, int volume) {
+        super(name, power, room);
+        if (channel < 1) {
+            this.channel = 1;
+        } else {
+            this.channel = channel;
+        }
 
+        if (volume < 0) {
+            this.volume = 0;
+        } else if (volume > 100) {
+            this.volume = 100;
+        } else {
+            this.volume = volume;
+        }
+    }
+
+    public void nextChannel() {
+        channel++;
+        System.out.println("Telewizor " + getName() + "gra teraz kanał nr. " + channel + ".");
+    }
+    public void previousChannel() {
+        channel--;
+        if (channel < 1) {
+            channel=1;
+        }
+        System.out.println("Telewizor " + getName() + "gra teraz kanał nr. " + channel + ".");
+    }
+
+    public void increaseVolume() {
+        volume++;
+        if (volume > 100) {
+            volume = 100;
+        }
+        System.out.println("Głośność telewizora: " + getName() + " wynosi " + volume);
+    }
+
+    public void decreaseVolume() {
+       volume--;
+        if (volume < 0) {
+            volume = 0;
+        }
+        System.out.println("Głośność telewizora: " + getName() + " wynosi " + volume);
+    }
+
+    @Override
+    public void showInfo() {
+        System.out.println("Telewizor: " + getName());
+        System.out.println("Pomieszczenie: " + getRoom());
+        System.out.println("Moc: " + getPower());
+        System.out.println("Stan: " + (isOn() ? "włączona" : "wyłączona") + ".");
+        System.out.println("Kanał: " + channel + "%.");
+        System.out.println("Głośność: " + volume + ".");
+    }
+
+    public int getChannel() {
+        return channel;
+    }
+
+    public int getVolume() {
+        return volume;
+    }
 }
