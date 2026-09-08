@@ -14,15 +14,56 @@ package pl.zsgornik.smarthome.model;
 //Schedulable
 //Metoda: schedule(String time) powinna zapamiętać godzinę uruchomienia.
 //showInfo() Wyświetl:
-//    •	nazwę,
-//    •	pomieszczenie,
-//    •	moc,
-//    •	stan,
-//    •	temperaturę,
-//    •	zaplanowaną godzinę, jeśli została ustawiona.
+//    •    nazwę,
+//    •    pomieszczenie,
+//    •    moc,
+//    •    stan,
+//    •    temperaturę,
+//    •    zaplanowaną godzinę, jeśli została ustawiona.
 
-public class AirConditioner {
+public class AirConditioner extends Device implements Controllable, Schedulable {
+    private int temperature;
+    private String scheduledTime;
 
-    // TODO
+    public AirConditioner(String name, String room, int power, int temperature) {
+        super(name, power, room);
+        this.temperature = temperature;
+    }
 
+
+    @Override
+    public void showInfo() {
+        System.out.println("Klimatyzacja " + getName());
+        System.out.println("Pomieszczenie: " + getRoom());
+        System.out.println("Moc" + getPower());
+        System.out.println("Stan: " + (isOn() ? "Włączona" : "Wyłączona"));
+        System.out.println("Obecna temperatura" + temperature);
+        System.out.println("Czas włącznia to: " + scheduledTime);
+    }
+
+    @Override
+    public void schedule(String time) {
+        scheduledTime = time;
+        System.out.println("Oczekiwany czas to: " + scheduledTime);
+    }
+
+    @Override
+    public void incrasePower() {
+        this.temperature++;
+        System.out.println("Zwiększono moc o 1 stopień, moc wynosi " + temperature);
+    }
+
+    @Override
+    public void decrasePower() {
+        this.temperature--;
+        System.out.println("Zmniejszono moc o 1 stopień, moc wynosi " + temperature);
+    }
+
+    public int getTemperature() {
+        return temperature;
+    }
+
+    public String getScheduledTime() {
+        return scheduledTime;
+    }
 }
