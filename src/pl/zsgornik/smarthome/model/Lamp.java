@@ -22,6 +22,8 @@ public class Lamp extends Device implements Controllable {
             brightness = 0;
         } else if (brightness > 100) {
             brightness = 100;
+        }else  {
+            this.brightness = brightness;
         }
     }
 
