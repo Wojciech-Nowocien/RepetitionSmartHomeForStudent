@@ -16,6 +16,45 @@ package pl.zsgornik.smarthome.model;
 //turnOff()
 //oraz abstrakcyjną metodę: showInfo()
 
-public class Device {
-    // TODO
+public abstract class Device {
+    private String name;
+    private String room;
+    private int power;
+    private boolean isOn;
+
+    public Device(String name, int power, String room) {
+        this.name = name;
+        this.power = power;
+        this.room = room;
+        isOn = false;
+    }
+
+
+    void turnOn() {
+        System.out.println("Włączono " + name + "urządzenie.");
+        isOn = true;
+    }
+
+    void turnOff() {
+        System.out.println("Wyłączono " + name + "urządzenie.");
+        isOn = false;
+    }
+
+    abstract void showInfo();
+
+    public String getName() {
+        return name;
+    }
+
+    public String getRoom() {
+        return room;
+    }
+
+    public int getPower() {
+        return power;
+    }
+
+    public boolean isOn() {
+        return isOn;
+    }
 }
