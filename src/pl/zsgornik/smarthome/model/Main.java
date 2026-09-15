@@ -1,4 +1,5 @@
 package pl.zsgornik.smarthome.model;
+
 //Utwórz obiekt: SmartHome home = new SmartHome();
 //Następnie utwórz co najmniej:
 //    2 × Lamp
@@ -20,15 +21,18 @@ package pl.zsgornik.smarthome.model;
 //I. Wyświetl urządzenia z harmonogramem: home.showSchedulableDevices();
 //J. Wyłącz wszystkie urządzenia: home.turnOffAll();
 
-public class Main {
+import pl.zsgornik.smarthome.model.*;
 
+import java.time.Instant;
+
+public class Main {
     public static void main(String[] args) {
-        SmartHome home = new SmartHome();
-        Lamp lamp1 = new Lamp("Lampa główna", 50,"Salon", 100);
-        Lamp lamp2 = new Lamp("Lampa nocna", 20, "Sypialnia", 30);
-        AirConditioner airConditioner = new AirConditioner("Hisens", "Salon", 2500, 25);
-        Television television = new Television("Samsung", "Sypialnia", 150,  21, 23);
-        RobotVacuum robotVacuum = new RobotVacuum("Rumba", "Łaznieka", 100, 68);
+        var home = new SmartHome();
+        var lamp1 = new Lamp("Glowna lampa", 30, "salon",  50);
+        var lamp2 = new Lamp("Nocna lampa", 10,"sypialnia",  15);
+        var airConditioner = new AirConditioner("Klimatyzacja Peugot", "salon", 400, 22.5);
+        var television = new Television("Telewizor LG", "kuchnia", 120, 1, 20);
+        var robotVacuum = new RobotVacuum("Dyson", "kuchnia", 50, 67);
 
         home.addDevice(lamp1);
         home.addDevice(lamp2);
@@ -37,17 +41,35 @@ public class Main {
         home.addDevice(robotVacuum);
 
         home.showAllDevices();
+
         home.turnOnAll();
+
         home.showAllDevices();
-        System.out.println("Test Controllable");
-        lamp2.incrasePower();
-        lamp2.incrasePower();
-        lamp2.incrasePower();
-        lamp2.incrasePower();
+
+        lamp1.incrasePower();
+        lamp1.incrasePower();
+        lamp1.incrasePower();
+        lamp2.decrasePower();
+
         airConditioner.incrasePower();
         airConditioner.incrasePower();
-        airConditioner.incrasePower();
-        airConditioner.incrasePower();
-        airConditioner.incrasePower();
+        airConditioner.decrasePower();
+        airConditioner.decrasePower();
+        airConditioner.decrasePower();
+        airConditioner.decrasePower();
+
+        television.nextChannel();
+        television.decreaseVolume();
+
+        airConditioner.schedule(Instant.now().plusMillis(1 * 60 * 60 * 1000).toString());
+        robotVacuum.schedule(Instant.now().plusMillis(6 * 60 * 60 * 1000).toString());
+
+        home.showControllableDevices();
+
+        home.showSchedulableDevices();
+
+        home.turnOffAll();
+
+        home.showAllDevices();
     }
 }
