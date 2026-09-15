@@ -49,17 +49,17 @@ public class Main {
 
         home.showAllDevices();
 
-        lamp1.incrasePower();
-        lamp1.incrasePower();
-        lamp1.incrasePower();
-        lamp2.decrasePower();
+        lamp1.increasePower();
+        lamp1.increasePower();
+        lamp1.increasePower();
+        lamp2.decreasePower();
 
-        airConditioner.incrasePower();
-        airConditioner.incrasePower();
-        airConditioner.decrasePower();
-        airConditioner.decrasePower();
-        airConditioner.decrasePower();
-        airConditioner.decrasePower();
+        airConditioner.increasePower();
+        airConditioner.increasePower();
+        airConditioner.decreasePower();
+        airConditioner.decreasePower();
+        airConditioner.decreasePower();
+        airConditioner.decreasePower();
 
         television.nextChannel();
         television.decreaseVolume();

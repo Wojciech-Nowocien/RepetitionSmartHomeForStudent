@@ -29,7 +29,7 @@ public class Lamp extends Device implements Controllable {
 
 
     @Override
-    public void incrasePower() {
+    public void increasePower() {
         brightness += 10;
         if (brightness > 100) {
             brightness = 100;
@@ -38,7 +38,7 @@ public class Lamp extends Device implements Controllable {
     }
 
     @Override
-    public void decrasePower() {
+    public void decreasePower() {
         brightness -= 10;
         if (brightness < 0) {
             brightness = 0;

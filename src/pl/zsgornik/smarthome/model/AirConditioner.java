@@ -48,13 +48,13 @@ public class AirConditioner extends Device implements Controllable, Schedulable 
     }
 
     @Override
-    public void incrasePower() {
+    public void increasePower() {
         this.temperature++;
         System.out.println("Zwiększono moc o 1 stopień, moc wynosi " + temperature);
     }
 
     @Override
-    public void decrasePower() {
+    public void decreasePower() {
         this.temperature--;
         System.out.println("Zmniejszono moc o 1 stopień, moc wynosi " + temperature);
     }
