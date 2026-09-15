@@ -30,17 +30,17 @@ public abstract class Device {
     }
 
 
-    void turnOn() {
+    public void turnOn() {
         System.out.println("Włączono " + name + "urządzenie.");
         isOn = true;
     }
 
-    void turnOff() {
+    public void turnOff() {
         System.out.println("Wyłączono " + name + "urządzenie.");
         isOn = false;
     }
 
-    abstract void showInfo();
+    public abstract void showInfo();
 
     public String getName() {
         return name;

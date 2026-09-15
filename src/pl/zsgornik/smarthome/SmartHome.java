@@ -1,4 +1,8 @@
-package pl.zsgornik.smarthome.model;
+package pl.zsgornik.smarthome;
+
+import pl.zsgornik.smarthome.model.Controllable;
+import pl.zsgornik.smarthome.model.Device;
+import pl.zsgornik.smarthome.model.Schedulable;
 
 import java.util.ArrayList;
 import java.util.List;

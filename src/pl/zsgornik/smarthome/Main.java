@@ -1,4 +1,4 @@
-package pl.zsgornik.smarthome.model;
+package pl.zsgornik.smarthome;
 
 //Utwórz obiekt: SmartHome home = new SmartHome();
 //Następnie utwórz co najmniej:
@@ -21,7 +21,10 @@ package pl.zsgornik.smarthome.model;
 //I. Wyświetl urządzenia z harmonogramem: home.showSchedulableDevices();
 //J. Wyłącz wszystkie urządzenia: home.turnOffAll();
 
-import pl.zsgornik.smarthome.model.*;
+import pl.zsgornik.smarthome.model.AirConditioner;
+import pl.zsgornik.smarthome.model.Lamp;
+import pl.zsgornik.smarthome.model.RobotVacuum;
+import pl.zsgornik.smarthome.model.Television;
 
 import java.time.Instant;
 
@@ -30,7 +33,7 @@ public class Main {
         var home = new SmartHome();
         var lamp1 = new Lamp("Glowna lampa", 30, "salon",  50);
         var lamp2 = new Lamp("Nocna lampa", 10,"sypialnia",  15);
-        var airConditioner = new AirConditioner("Klimatyzacja Peugot", "salon", 400, 22.5);
+        var airConditioner = new AirConditioner("Klimatyzacja Peugot", "salon", 400, 22);
         var television = new Television("Telewizor LG", "kuchnia", 120, 1, 20);
         var robotVacuum = new RobotVacuum("Dyson", "kuchnia", 50, 67);
 

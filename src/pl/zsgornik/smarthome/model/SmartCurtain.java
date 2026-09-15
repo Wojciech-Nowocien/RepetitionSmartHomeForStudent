@@ -50,7 +50,7 @@ public class SmartCurtain extends Device implements Schedulable {
     }
 
     @Override
-    void showInfo() {
+    public void showInfo() {
         System.out.println("Robot: " + getName());
         System.out.println("Pomieszczenie: " + getRoom());
         System.out.println("Moc: " + getPower());

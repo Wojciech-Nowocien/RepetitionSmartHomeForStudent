@@ -47,7 +47,7 @@ public class Lamp extends Device implements Controllable {
     }
 
     @Override
-    void showInfo() {
+    public void showInfo() {
         System.out.println("Lampa: "+ getName());
         System.out.println("Pomieszczenie: "+ getRoom());
         System.out.println("Moc: "+ getPower());
