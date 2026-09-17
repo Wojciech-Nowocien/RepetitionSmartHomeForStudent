@@ -103,6 +103,14 @@ public class SmartHome {
         System.out.println();
     }
 
+    public float calculatePowerConsumption(float hours) {
+        float powerConsumption = 0;
+        for (Device device : devices) {
+            powerConsumption += device.calculatePowerConsumption(hours);
+        }
+        return powerConsumption;
+    }
+
     public List<Device> getDevices() {
         return devices;
     }

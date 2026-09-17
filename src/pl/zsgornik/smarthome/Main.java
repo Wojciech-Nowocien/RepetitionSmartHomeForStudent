@@ -107,5 +107,7 @@ public class Main {
         smartCurtain.control("CLOSE");
 
         television.control("MUTE");
+
+        System.out.println("\nCały dom zużyje " + home.calculatePowerConsumption(1.5f) + " kWh przez 1.5 godziny.");
     }
 }
