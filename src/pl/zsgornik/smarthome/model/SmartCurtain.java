@@ -15,7 +15,7 @@ package pl.zsgornik.smarthome.model;
  * <p>
  * otwarcie i zamknięcie co 10%
  */
-public class SmartCurtain extends Device implements Schedulable {
+public class SmartCurtain extends Device implements Schedulable, RemoteControllable {
     int openingLevel;
 
     String scheduledTime;
@@ -47,6 +47,26 @@ public class SmartCurtain extends Device implements Schedulable {
             this.openingLevel = 0;
         }
         System.out.println("Poziom otwarcia wynosi: " + openingLevel + "%.");
+    }
+
+    @Override
+    public void control(String command) {
+        switch (command) {
+            case "ON":
+                turnOn();
+                break;
+            case "OFF":
+                turnOff();
+                break;
+            case "OPEN":
+                open();
+                break;
+            case "CLOSE":
+                close();
+                break;
+            default:
+                System.out.println("Urządzenie " + getName() + "nie rozpoznaje komendy \"" + command + "\"");
+        }
     }
 
     @Override

@@ -21,7 +21,7 @@ package pl.zsgornik.smarthome.model;
 //    •    temperaturę,
 //    •    zaplanowaną godzinę, jeśli została ustawiona.
 
-public class AirConditioner extends Device implements Controllable, Schedulable {
+public class AirConditioner extends Device implements Controllable, Schedulable, RemoteControllable {
     private int temperature;
     private String scheduledTime;
 
@@ -57,6 +57,26 @@ public class AirConditioner extends Device implements Controllable, Schedulable 
     public void decreasePower() {
         this.temperature--;
         System.out.println("Zmniejszono moc o 1 stopień, moc wynosi " + temperature);
+    }
+
+    @Override
+    public void control(String command) {
+        switch (command) {
+            case "ON":
+                turnOn();
+                break;
+            case "OFF":
+                turnOff();
+                break;
+            case "INCREASE":
+                increasePower();
+                break;
+            case "DECREASE":
+                decreasePower();
+                break;
+            default:
+                System.out.println("Urządzenie " + getName() + "nie rozpoznaje komendy \"" + command + "\"");
+        }
     }
 
     public int getTemperature() {

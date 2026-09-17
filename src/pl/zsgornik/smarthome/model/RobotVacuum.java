@@ -17,7 +17,7 @@ package pl.zsgornik.smarthome.model;
 //    •	poziom baterii,
 //    •	zaplanowaną godzinę sprzątania.
 
-public class RobotVacuum extends Device implements Schedulable {
+public class RobotVacuum extends Device implements Schedulable, RemoteControllable {
     private int batteryLevel;
     private String scheduledTime;
 
@@ -29,6 +29,20 @@ public class RobotVacuum extends Device implements Schedulable {
             this.batteryLevel = batteryLevel;
         } else {
             this.batteryLevel = batteryLevel;
+        }
+    }
+
+    @Override
+    public void control(String command) {
+        switch (command) {
+            case "ON":
+                turnOn();
+                break;
+            case "OFF":
+                turnOff();
+                break;
+            default:
+                System.out.println("Urządzenie " + getName() + "nie rozpoznaje komendy \"" + command + "\"");
         }
     }
 

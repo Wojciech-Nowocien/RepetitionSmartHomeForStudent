@@ -16,7 +16,7 @@ package pl.zsgornik.smarthome.model;
 //Przesłoń:
 //showInfo()
 
-public class Television extends Device {
+public class Television extends Device implements RemoteControllable {
     private int channel;
     private int volume;
 
@@ -63,6 +63,32 @@ public class Television extends Device {
             volume = 0;
         }
         System.out.println("Głośność telewizora: " + getName() + " wynosi " + volume);
+    }
+
+    @Override
+    public void control(String command) {
+        switch (command) {
+            case "ON":
+                turnOn();
+                break;
+            case "OFF":
+                turnOff();
+                break;
+            case "NEXT":
+                nextChannel();
+                break;
+            case "PREVIOUS":
+                previousChannel();
+                break;
+            case "INCREASE":
+                increaseVolume();
+                break;
+            case "DECREASE":
+                decreaseVolume();
+                break;
+            default:
+                System.out.println("Urządzenie " + getName() + "nie rozpoznaje komendy \"" + command + "\"");
+        }
     }
 
     @Override
