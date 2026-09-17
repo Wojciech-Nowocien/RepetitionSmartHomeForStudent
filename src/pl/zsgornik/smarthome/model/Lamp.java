@@ -63,7 +63,7 @@ public class Lamp extends Device implements Controllable, RemoteControllable {
                 decreasePower();
                 break;
             default:
-                System.out.println("Urządzenie " + getName() + "nie rozpoznaje komendy \"" + command + "\"!");
+                System.out.println("Urządzenie " + getName() + " nie rozpoznaje komendy \"" + command + "\"!");
         }
         System.out.println("Koniec zdalnego sterowania.");
     }

@@ -43,7 +43,7 @@ public class RobotVacuum extends Device implements Schedulable, RemoteControllab
                 turnOff();
                 break;
             default:
-                System.out.println("Urządzenie " + getName() + "nie rozpoznaje komendy \"" + command + "\"!");
+                System.out.println("Urządzenie " + getName() + " nie rozpoznaje komendy \"" + command + "\"!");
         }
         System.out.println("Koniec zdalnego sterowania.");
     }

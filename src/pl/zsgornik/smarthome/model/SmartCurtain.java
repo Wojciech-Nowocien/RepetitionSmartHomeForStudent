@@ -66,7 +66,7 @@ public class SmartCurtain extends Device implements Schedulable, RemoteControlla
                 close();
                 break;
             default:
-                System.out.println("Urządzenie " + getName() + "nie rozpoznaje komendy \"" + command + "\"!");
+                System.out.println("Urządzenie " + getName() + " nie rozpoznaje komendy \"" + command + "\"!");
         }
         System.out.println("Koniec zdalnego sterowania.");
     }
