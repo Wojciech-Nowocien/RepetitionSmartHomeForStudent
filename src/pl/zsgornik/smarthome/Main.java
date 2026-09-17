@@ -24,24 +24,26 @@ package pl.zsgornik.smarthome;
 import pl.zsgornik.smarthome.model.AirConditioner;
 import pl.zsgornik.smarthome.model.Lamp;
 import pl.zsgornik.smarthome.model.RobotVacuum;
+import pl.zsgornik.smarthome.model.SmartCurtain;
 import pl.zsgornik.smarthome.model.Television;
-
-import java.time.Instant;
 
 public class Main {
     public static void main(String[] args) {
         var home = new SmartHome();
-        var lamp1 = new Lamp("Glowna lampa", 30, "salon",  50);
-        var lamp2 = new Lamp("Nocna lampa", 10,"sypialnia",  15);
-        var airConditioner = new AirConditioner("Klimatyzacja Peugot", "salon", 400, 22);
-        var television = new Television("Telewizor LG", "kuchnia", 120, 1, 20);
-        var robotVacuum = new RobotVacuum("Dyson", "kuchnia", 50, 67);
+
+        var lamp1 = new Lamp("Lampa sufitowa", 40, "salon", 50);
+        var lamp2 = new Lamp("Lampa nocna", 15, "sypialnia", 20);
+        var airConditioner = new AirConditioner("Klimatyzator ścienny", "salon", 1500, 22);
+        var television = new Television("Telewizor w salonie", "salon", 120, 1, 25);
+        var robotVacuum = new RobotVacuum("Robot sprzątający", "korytarz", 50, 80);
+        var smartCurtain = new SmartCurtain("Roleta okienna", 30, "sypialnia", 40);
 
         home.addDevice(lamp1);
         home.addDevice(lamp2);
         home.addDevice(airConditioner);
         home.addDevice(television);
         home.addDevice(robotVacuum);
+        home.addDevice(smartCurtain);
 
         home.showAllDevices();
 
@@ -51,21 +53,20 @@ public class Main {
 
         lamp1.increasePower();
         lamp1.increasePower();
-        lamp1.increasePower();
-        lamp2.decreasePower();
+        lamp1.decreasePower();
 
         airConditioner.increasePower();
         airConditioner.increasePower();
-        airConditioner.decreasePower();
-        airConditioner.decreasePower();
-        airConditioner.decreasePower();
         airConditioner.decreasePower();
 
         television.nextChannel();
+        television.previousChannel();
+        television.increaseVolume();
         television.decreaseVolume();
 
-        airConditioner.schedule(Instant.now().plusMillis(1 * 60 * 60 * 1000).toString());
-        robotVacuum.schedule(Instant.now().plusMillis(6 * 60 * 60 * 1000).toString());
+        airConditioner.schedule("14:30");
+        robotVacuum.schedule("09:00");
+        smartCurtain.schedule("07:00");
 
         home.showControllableDevices();
 
@@ -73,6 +74,38 @@ public class Main {
 
         home.turnOffAll();
 
-        home.showAllDevices();
+        System.out.println("Zużycie energii (" + television.getName() + ", 5h): " + television.calculatePowerConsumption(5f) + " kWh");
+        System.out.println("Zużycie energii (" + airConditioner.getName() + ", 8h): " + airConditioner.calculatePowerConsumption(8f) + " kWh");
+
+        System.out.println("Pobranie jasności lampy: " + lamp1.getBrightness() + "%");
+        System.out.println("Pobranie temperatury klimatyzatora: " + airConditioner.getTemperature() + "°C");
+        System.out.println("Pobranie zaplanowanego czasu klimatyzatora: " + airConditioner.getScheduledTime());
+        System.out.println("Pobranie kanału telewizora: " + television.getChannel());
+        System.out.println("Pobranie głośności telewizora: " + television.getVolume());
+        System.out.println("Pobranie poziomu baterii robota: " + robotVacuum.getBatteryLevel() + "%");
+        System.out.println("Pobranie zaplanowanego czasu robota: " + robotVacuum.getScheduledTime());
+
+        smartCurtain.open();
+        smartCurtain.close();
+
+        lamp1.control("ON");
+        lamp1.control("INCREASE");
+        lamp1.control("OFF");
+
+        airConditioner.control("ON");
+        airConditioner.control("INCREASE");
+        airConditioner.control("DECREASE");
+
+        television.control("ON");
+        television.control("NEXT");
+        television.control("INCREASE");
+
+        robotVacuum.control("ON");
+        robotVacuum.control("OFF");
+
+        smartCurtain.control("OPEN");
+        smartCurtain.control("CLOSE");
+
+        television.control("MUTE");
     }
 }
