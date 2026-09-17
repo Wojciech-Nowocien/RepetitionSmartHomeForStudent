@@ -41,10 +41,11 @@ public class Television extends Device implements RemoteControllable {
         channel++;
         System.out.println("Telewizor " + getName() + "gra teraz kanał nr. " + channel + ".");
     }
+
     public void previousChannel() {
         channel--;
         if (channel < 1) {
-            channel=1;
+            channel = 1;
         }
         System.out.println("Telewizor " + getName() + "gra teraz kanał nr. " + channel + ".");
     }
@@ -58,7 +59,7 @@ public class Television extends Device implements RemoteControllable {
     }
 
     public void decreaseVolume() {
-       volume--;
+        volume--;
         if (volume < 0) {
             volume = 0;
         }

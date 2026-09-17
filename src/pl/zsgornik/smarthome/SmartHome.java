@@ -27,7 +27,7 @@ import java.util.List;
 //Metoda powinna wyświetlić tylko urządzenia implementujące: Schedulable
 
 public class SmartHome {
-    private List<Device> devices;
+    private final List<Device> devices;
 
     public SmartHome() {
         this.devices = new ArrayList<>();

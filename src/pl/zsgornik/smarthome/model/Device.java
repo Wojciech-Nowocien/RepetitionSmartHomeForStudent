@@ -17,9 +17,9 @@ package pl.zsgornik.smarthome.model;
 //oraz abstrakcyjną metodę: showInfo()
 
 public abstract class Device {
-    private String name;
-    private String room;
-    private int power;
+    private final String name;
+    private final String room;
+    private final int power;
     private boolean isOn;
 
     public Device(String name, int power, String room) {

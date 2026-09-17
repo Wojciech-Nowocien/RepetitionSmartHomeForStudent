@@ -18,7 +18,7 @@ package pl.zsgornik.smarthome.model;
 //    •	zaplanowaną godzinę sprzątania.
 
 public class RobotVacuum extends Device implements Schedulable, RemoteControllable {
-    private int batteryLevel;
+    private final int batteryLevel;
     private String scheduledTime;
 
     public RobotVacuum(String name, String room, int power, int batteryLevel) {

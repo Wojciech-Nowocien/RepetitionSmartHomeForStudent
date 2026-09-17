@@ -22,7 +22,7 @@ public class Lamp extends Device implements Controllable, RemoteControllable {
             brightness = 0;
         } else if (brightness > 100) {
             brightness = 100;
-        }else  {
+        } else {
             this.brightness = brightness;
         }
     }
@@ -71,11 +71,11 @@ public class Lamp extends Device implements Controllable, RemoteControllable {
     @Override
     public void showInfo() {
         System.out.println("\n=====================================================");
-        System.out.println("Lampa: "+ getName());
-        System.out.println("Pomieszczenie: "+ getRoom());
-        System.out.println("Moc: "+ getPower());
-        System.out.println("Stan: "+( isOn() ? "włączona" : "wyłączona"));
-        System.out.println("Jasność: " + brightness +"%");
+        System.out.println("Lampa: " + getName());
+        System.out.println("Pomieszczenie: " + getRoom());
+        System.out.println("Moc: " + getPower());
+        System.out.println("Stan: " + (isOn() ? "włączona" : "wyłączona"));
+        System.out.println("Jasność: " + brightness + "%");
         System.out.println("=====================================================\n");
     }
 
