@@ -29,6 +29,9 @@ public abstract class Device {
         isOn = false;
     }
 
+    public float calculatePowerConsumption(float hours) {
+        return (power * hours) / 1000;
+    }
 
     public void turnOn() {
         System.out.println("Włączono " + name + "urządzenie.");
