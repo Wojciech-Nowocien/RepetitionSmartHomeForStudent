@@ -24,9 +24,9 @@ public class RobotVacuum extends Device implements Schedulable, RemoteControllab
     public RobotVacuum(String name, String room, int power, int batteryLevel) {
         super(name, power, room);
         if (batteryLevel < 0) {
-            this.batteryLevel = batteryLevel;
+            this.batteryLevel = 0;
         } else if (batteryLevel > 100) {
-            this.batteryLevel = batteryLevel;
+            this.batteryLevel = 100;
         } else {
             this.batteryLevel = batteryLevel;
         }
