@@ -48,6 +48,7 @@ public class Lamp extends Device implements Controllable, RemoteControllable {
 
     @Override
     public void control(String command) {
+        System.out.println("Zdalne sterowanie urządzenia " + getName() + ":");
         switch (command) {
             case "ON":
                 turnOn();
@@ -62,17 +63,20 @@ public class Lamp extends Device implements Controllable, RemoteControllable {
                 decreasePower();
                 break;
             default:
-                System.out.println("Urządzenie " + getName() + "nie rozpoznaje komendy \"" + command + "\"");
+                System.out.println("Urządzenie " + getName() + "nie rozpoznaje komendy \"" + command + "\"!");
         }
+        System.out.println("Koniec zdalnego sterowania.");
     }
 
     @Override
     public void showInfo() {
+        System.out.println("\n=====================================================");
         System.out.println("Lampa: "+ getName());
         System.out.println("Pomieszczenie: "+ getRoom());
         System.out.println("Moc: "+ getPower());
-        System.out.println("Stan: "+( isOn() ? "włączona" : "wyłączona") + ".");
-        System.out.println("Jasność: " + brightness +"%.");
+        System.out.println("Stan: "+( isOn() ? "włączona" : "wyłączona"));
+        System.out.println("Jasność: " + brightness +"%");
+        System.out.println("=====================================================\n");
     }
 
     public int getBrightness() {

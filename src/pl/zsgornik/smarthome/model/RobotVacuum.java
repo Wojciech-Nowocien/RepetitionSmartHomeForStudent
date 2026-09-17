@@ -34,6 +34,7 @@ public class RobotVacuum extends Device implements Schedulable, RemoteControllab
 
     @Override
     public void control(String command) {
+        System.out.println("Zdalne sterowanie urządzenia " + getName() + ":");
         switch (command) {
             case "ON":
                 turnOn();
@@ -42,18 +43,21 @@ public class RobotVacuum extends Device implements Schedulable, RemoteControllab
                 turnOff();
                 break;
             default:
-                System.out.println("Urządzenie " + getName() + "nie rozpoznaje komendy \"" + command + "\"");
+                System.out.println("Urządzenie " + getName() + "nie rozpoznaje komendy \"" + command + "\"!");
         }
+        System.out.println("Koniec zdalnego sterowania.");
     }
 
     @Override
     public void showInfo() {
+        System.out.println("\n=====================================================");
         System.out.println("Robot: " + getName());
         System.out.println("Pomieszczenie: " + getRoom());
         System.out.println("Moc: " + getPower());
-        System.out.println("Stan: " + (isOn() ? "włączona" : "wyłączona") + ".");
-        System.out.println("Poziom baterii: " + batteryLevel + "%.");
-        System.out.println("Sprzątanie zaplanowano na: " + scheduledTime + ".");
+        System.out.println("Stan: " + (isOn() ? "włączona" : "wyłączona"));
+        System.out.println("Poziom baterii: " + batteryLevel + "%");
+        System.out.println("Sprzątanie zaplanowano na: " + scheduledTime);
+        System.out.println("=====================================================\n");
     }
 
     @Override

@@ -34,12 +34,12 @@ public abstract class Device {
     }
 
     public void turnOn() {
-        System.out.println("Włączono " + name + "urządzenie.");
+        System.out.println("Włączono " + name + " urządzenie.");
         isOn = true;
     }
 
     public void turnOff() {
-        System.out.println("Wyłączono " + name + "urządzenie.");
+        System.out.println("Wyłączono " + name + " urządzenie.");
         isOn = false;
     }
 

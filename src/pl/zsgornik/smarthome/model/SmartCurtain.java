@@ -38,7 +38,7 @@ public class SmartCurtain extends Device implements Schedulable, RemoteControlla
         if (openingLevel > 100) {
             this.openingLevel = 100;
         }
-        System.out.println("Poziom otwarcia wynosi: " + openingLevel + "%.");
+        System.out.println("Poziom otwarcia wynosi: " + openingLevel + "%");
     }
 
     public void close() {
@@ -46,11 +46,12 @@ public class SmartCurtain extends Device implements Schedulable, RemoteControlla
         if (openingLevel < 0) {
             this.openingLevel = 0;
         }
-        System.out.println("Poziom otwarcia wynosi: " + openingLevel + "%.");
+        System.out.println("Poziom otwarcia wynosi: " + openingLevel + "%");
     }
 
     @Override
     public void control(String command) {
+        System.out.println("Zdalne sterowanie urządzenia " + getName() + ":");
         switch (command) {
             case "ON":
                 turnOn();
@@ -65,18 +66,21 @@ public class SmartCurtain extends Device implements Schedulable, RemoteControlla
                 close();
                 break;
             default:
-                System.out.println("Urządzenie " + getName() + "nie rozpoznaje komendy \"" + command + "\"");
+                System.out.println("Urządzenie " + getName() + "nie rozpoznaje komendy \"" + command + "\"!");
         }
+        System.out.println("Koniec zdalnego sterowania.");
     }
 
     @Override
     public void showInfo() {
+        System.out.println("\n=====================================================");
         System.out.println("Robot: " + getName());
         System.out.println("Pomieszczenie: " + getRoom());
         System.out.println("Moc: " + getPower());
-        System.out.println("Stan: " + (isOn() ? "włączona" : "wyłączona") + ".");
-        System.out.println("Poziom otwarcia: " + openingLevel + "%.");
-        System.out.println("Sprzątanie zaplanowano na: " + scheduledTime + ".");
+        System.out.println("Stan: " + (isOn() ? "włączona" : "wyłączona"));
+        System.out.println("Poziom otwarcia: " + openingLevel + "%");
+        System.out.println("Sprzątanie zaplanowano na: " + scheduledTime);
+        System.out.println("=====================================================\n");
     }
 
     @Override

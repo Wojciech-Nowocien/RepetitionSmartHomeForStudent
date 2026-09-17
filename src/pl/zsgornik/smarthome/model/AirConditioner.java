@@ -33,12 +33,14 @@ public class AirConditioner extends Device implements Controllable, Schedulable,
 
     @Override
     public void showInfo() {
-        System.out.println("Klimatyzacja " + getName());
+        System.out.println("\n=====================================================");
+        System.out.println("Klimatyzacja: " + getName());
         System.out.println("Pomieszczenie: " + getRoom());
-        System.out.println("Moc" + getPower());
+        System.out.println("Moc: " + getPower());
         System.out.println("Stan: " + (isOn() ? "Włączona" : "Wyłączona"));
-        System.out.println("Obecna temperatura" + temperature);
+        System.out.println("Obecna temperatura: " + temperature);
         System.out.println("Czas włącznia to: " + scheduledTime);
+        System.out.println("=====================================================\n");
     }
 
     @Override
@@ -50,17 +52,18 @@ public class AirConditioner extends Device implements Controllable, Schedulable,
     @Override
     public void increasePower() {
         this.temperature++;
-        System.out.println("Zwiększono moc o 1 stopień, moc wynosi " + temperature);
+        System.out.println("Zwiększono moc o 1 stopień, moc wynosi " + temperature + ".");
     }
 
     @Override
     public void decreasePower() {
         this.temperature--;
-        System.out.println("Zmniejszono moc o 1 stopień, moc wynosi " + temperature);
+        System.out.println("Zmniejszono moc o 1 stopień, moc wynosi " + temperature + ".");
     }
 
     @Override
     public void control(String command) {
+        System.out.println("Zdalne sterowanie urządzenia " + getName() + ":");
         switch (command) {
             case "ON":
                 turnOn();
@@ -75,8 +78,9 @@ public class AirConditioner extends Device implements Controllable, Schedulable,
                 decreasePower();
                 break;
             default:
-                System.out.println("Urządzenie " + getName() + "nie rozpoznaje komendy \"" + command + "\"");
+                System.out.println("Urządzenie " + getName() + "nie rozpoznaje komendy \"" + command + "\"!");
         }
+        System.out.println("Koniec zdalnego sterowania.");
     }
 
     public int getTemperature() {

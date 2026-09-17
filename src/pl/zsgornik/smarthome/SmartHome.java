@@ -47,17 +47,17 @@ public class SmartHome {
     }
 
     public void showAllDevices() {
-        System.out.println("Wszytskie urządzenia:");
+        System.out.println("\n\nWszystkie urządzenia:");
         devices.stream()
                 .forEach(Device::showInfo);
-        System.out.println("\n \n");
+        System.out.println("Wyświetlono wszystkie urządzenia.\n");
     }
 
     public void turnOnAll() {
-        System.out.println("Włączanie wszytskich urządzen.");
+        System.out.println("\n\nWłączanie wszystkich urządzeń:");
         devices.stream()
                 .forEach(Device::turnOn);
-        System.out.println("Urządzenia włączone.");
+        System.out.println("Urządzenia włączone.\n");
     }
 
 //    public void turnOfAll() {
@@ -68,11 +68,11 @@ public class SmartHome {
 //    }
 
     public void turnOffAll() {
-        System.out.println("Wyłączanie wszytskich urządzen.");
+        System.out.println("\n\nWyłączanie wszystkich urządzeń:");
         for (Device device : devices) {
             device.turnOff();
         }
-        System.out.println("Urządzenia wyłączone.");
+        System.out.println("Urządzenia wyłączone.\n");
     }
 
 //    public void showControllableDevices() {
@@ -84,7 +84,7 @@ public class SmartHome {
 //    }
 
     public void showControllableDevices() {
-        System.out.println("Urządzenia sterowalne:");
+        System.out.println("\n\nUrządzenia sterowalne:");
         for (Device device : devices) {
             if (device instanceof Controllable) {
                 System.out.println(device.getName());
@@ -94,7 +94,7 @@ public class SmartHome {
     }
 
     public void showSchedulableDevices() {
-        System.out.println("Urządzenia z harmonogramem:");
+        System.out.println("\n\nUrządzenia z harmonogramem:");
         for (Device device : devices) {
             if (device instanceof Schedulable) {
                 System.out.println(device.getName());
